@@ -13,6 +13,7 @@ public class ChunktoggleClient implements ClientModInitializer {
     private static KeyBinding toggleKey;
     private int oldViewDistance = -1;
     private int oldSimulationDistance = -1;
+    private static final int MAX_DISTANCE = 32;
 
     @Override
     public void onInitializeClient() {
@@ -37,13 +38,13 @@ public class ChunktoggleClient implements ClientModInitializer {
         if (oldViewDistance == -1 && oldSimulationDistance == -1) {
             oldViewDistance = currentViewDistance;
             oldSimulationDistance = currentSimulationDistance;
-            client.options.getViewDistance().setValue(32);
-            client.options.getSimulationDistance().setValue(32);
+            client.options.getViewDistance().setValue(MAX_DISTANCE);
+            client.options.getSimulationDistance().setValue(MAX_DISTANCE);
 
             client.options.write();
             client.worldRenderer.reload();
             if (client.player != null) {
-                client.inGameHud.setOverlayMessage(Text.literal("Distance is now 32"), false);
+                client.inGameHud.setOverlayMessage(Text.literal("Distance is now " + MAX_DISTANCE), false);
             }
 
         } else {
