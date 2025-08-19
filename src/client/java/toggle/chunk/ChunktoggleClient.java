@@ -11,7 +11,8 @@ import org.lwjgl.glfw.GLFW;
 
 public class ChunktoggleClient implements ClientModInitializer {
     private static KeyBinding toggleKey;
-    private int oldDistance = -1;
+    private int oldViewDistance = -1;
+    private int oldSimulationDistance = -1;
 
     @Override
     public void onInitializeClient() {
@@ -30,12 +31,15 @@ public class ChunktoggleClient implements ClientModInitializer {
     }
 
     private void toggleDistance(MinecraftClient client) {
-        int current = client.options.getViewDistance().getValue();
+        int currentViewDistance = client.options.getViewDistance().getValue();
+        int currentSimulationDistance = client.options.getSimulationDistance().getValue();
 
-
-        if (oldDistance == -1) {
-            oldDistance = current;
+        if (oldViewDistance == -1 && oldSimulationDistance == -1) {
+            oldViewDistance = currentViewDistance;
+            oldSimulationDistance = currentSimulationDistance;
             client.options.getViewDistance().setValue(32);
+            client.options.getSimulationDistance().setValue(32);
+
             client.options.write();
             client.worldRenderer.reload();
             if (client.player != null) {
@@ -43,13 +47,15 @@ public class ChunktoggleClient implements ClientModInitializer {
             }
 
         } else {
-            client.options.getViewDistance().setValue(oldDistance);
+            client.options.getViewDistance().setValue(oldViewDistance);
+            client.options.getSimulationDistance().setValue(oldSimulationDistance);
             client.options.write();
             client.worldRenderer.reload();
             if (client.player != null) {
-                client.inGameHud.setOverlayMessage(Text.literal("Render is now again: " + oldDistance), false);
+                client.inGameHud.setOverlayMessage(Text.literal("Render is now again: " + oldViewDistance + oldSimulationDistance), false);
             }
-            oldDistance = -1;
+            oldViewDistance = -1;
+            oldSimulationDistance = -1;
 
         }
     }
