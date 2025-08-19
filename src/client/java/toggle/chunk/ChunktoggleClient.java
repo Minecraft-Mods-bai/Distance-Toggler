@@ -32,15 +32,20 @@ public class ChunktoggleClient implements ClientModInitializer {
     private void toggleDistance(MinecraftClient client) {
         int current = client.options.getViewDistance().getValue();
 
+
         if (oldDistance == -1) {
             oldDistance = current;
             client.options.getViewDistance().setValue(32);
+            client.options.write();
+            client.worldRenderer.reload();
             if (client.player != null) {
                 client.inGameHud.setOverlayMessage(Text.literal("Render is now 32"), false);
             }
 
         } else {
             client.options.getViewDistance().setValue(oldDistance);
+            client.options.write();
+            client.worldRenderer.reload();
             if (client.player != null) {
                 client.inGameHud.setOverlayMessage(Text.literal("Render is now again: " + oldDistance), false);
             }
