@@ -43,7 +43,7 @@ public class ChunktoggleClient implements ClientModInitializer {
             client.options.write();
             client.worldRenderer.reload();
             if (client.player != null) {
-                client.inGameHud.setOverlayMessage(Text.literal("Render is now 32"), false);
+                client.inGameHud.setOverlayMessage(Text.literal("Distance is now 32"), false);
             }
 
         } else {
@@ -52,7 +52,7 @@ public class ChunktoggleClient implements ClientModInitializer {
             client.options.write();
             client.worldRenderer.reload();
             if (client.player != null) {
-                client.inGameHud.setOverlayMessage(Text.literal("Render is now again: " + oldViewDistance + oldSimulationDistance), false);
+                client.inGameHud.setOverlayMessage(Text.literal("Distance is now again: " + oldViewDistance), false);
             }
             oldViewDistance = -1;
             oldSimulationDistance = -1;
