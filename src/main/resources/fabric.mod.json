@@ -1,34 +1,25 @@
 {
 	"schemaVersion": 1,
-	"id": "chunk-toggle",
+	"id": "distance-toggle",
 	"version": "${version}",
-	"name": "chunk-toggle",
-	"description": "That toggles chunk to the latest and the previous ",
+	"name": "Distance Toggle",
+	"description": "Toggles chunk to 32 and the previous",
 	"authors": [
-		"Me!"
+		"Baturax"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://baturax.com",
+		"sources": "https://github.com/baturax/distance-tooggler"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/chunk-toggle/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"toggle.chunk.Chunktoggle"
-		],
+
 		"client": [
-			"toggle.chunk.ChunktoggleClient"
+          "toggle.distance.DistancetoggleClient"
 		]
 	},
-	"mixins": [
-		"chunk-toggle.mixins.json",
-		{
-			"config": "chunk-toggle.client.mixins.json",
-			"environment": "client"
-		}
-	],
 	"depends": {
 		"fabricloader": ">=0.17.2",
 		"minecraft": "~1.21.8",

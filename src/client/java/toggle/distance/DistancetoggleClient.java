@@ -1,4 +1,4 @@
-package toggle.chunk;
+package toggle.distance;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -9,7 +9,7 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
-public class ChunktoggleClient implements ClientModInitializer {
+public class DistancetoggleClient implements ClientModInitializer {
     private static KeyBinding toggleKey;
     private int oldViewDistance = -1;
     private int oldSimulationDistance = -1;
