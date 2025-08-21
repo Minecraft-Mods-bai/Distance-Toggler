@@ -18,7 +18,7 @@ public class DistancetoggleClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.chunktoggle.toggle",
+                "key.distancetoggle",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_K,
                 "key.categories.misc"
@@ -43,18 +43,13 @@ public class DistancetoggleClient implements ClientModInitializer {
 
             client.options.write();
             client.worldRenderer.reload();
-            if (client.player != null) {
-                client.inGameHud.setOverlayMessage(Text.literal("Distance is now " + MAX_DISTANCE), false);
-            }
-
+            client.inGameHud.setOverlayMessage(Text.translatable("distancetoggle.changed", MAX_DISTANCE), false);
         } else {
             client.options.getViewDistance().setValue(oldViewDistance);
             client.options.getSimulationDistance().setValue(oldSimulationDistance);
             client.options.write();
             client.worldRenderer.reload();
-            if (client.player != null) {
-                client.inGameHud.setOverlayMessage(Text.literal("Distance is now again: " + oldViewDistance), false);
-            }
+            client.inGameHud.setOverlayMessage(Text.translatable("distancetoggle.changed_again", oldViewDistance), false);
             oldViewDistance = -1;
             oldSimulationDistance = -1;
 

@@ -1,3 +1,5 @@
 {
-  "key.chunktoggle.toggle": "Toggle Chunk Distance"
+  "key.distancetoggle": "Toggle Distance",
+  "distancetoggle.changed": "Distance is now: %s",
+  "distancetoggle.changed_again": "Distance is now again: %s"
 }
