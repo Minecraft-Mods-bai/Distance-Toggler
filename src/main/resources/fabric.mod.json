@@ -1,30 +1,30 @@
 {
 	"schemaVersion": 1,
-	"id": "distance-toggle",
-	"version": "${version}",
-	"name": "Distance Toggle",
-	"description": "Toggles chunk to 32 and the previous",
-	"authors": [
-		"Baturax"
-	],
-	"contact": {
-		"homepage": "https://baturax.com",
-		"sources": "https://github.com/baturax/distance-tooggler"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/chunk-toggle/icon.png",
-	"environment": "*",
-	"entrypoints": {
-
-		"client": [
-          "toggle.distance.DistancetoggleClient"
-		]
-	},
-	"depends": {
-		"fabricloader": ">=0.17.2",
-		"minecraft": "~1.21.8",
-		"java": ">=21",
-		"fabric-api": "*"
-	}
-
+  "id": "distance-toggle",
+  "version": "${version}",
+  "name": "Distance Toggle",
+  "description": "Toggles distance to 32 and the previous",
+  "authors": [
+    "Baturax"
+  ],
+  "contact": {
+    "homepage": "https://baturax.com",
+    "sources": "https://github.com/baturax/distance-tooggler"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/chunk-toggle/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "toggle.distance.DistancetoggleClient"
+    ],
+    "modmenu": [ "toggle.distance.ModMenu" ]
+  },
+  "depends": {
+    "fabricloader": ">=0.17.2",
+    "minecraft": "~1.21.8",
+    "java": ">=21",
+    "fabric-api": "*",
+		"modmenu": "*"
+  }
 }
