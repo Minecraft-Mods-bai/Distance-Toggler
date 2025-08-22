@@ -13,7 +13,6 @@ public class DistancetoggleClient implements ClientModInitializer {
     private static KeyBinding toggleKey;
     private int oldViewDistance = -1;
     private int oldSimulationDistance = -1;
-    public static int maxDistance = 32;
 
     @Override
     public void onInitializeClient() {
@@ -38,12 +37,12 @@ public class DistancetoggleClient implements ClientModInitializer {
         if (oldViewDistance == -1 && oldSimulationDistance == -1) {
             oldViewDistance = currentViewDistance;
             oldSimulationDistance = currentSimulationDistance;
-            client.options.getViewDistance().setValue(maxDistance);
-            client.options.getSimulationDistance().setValue(maxDistance);
+            client.options.getViewDistance().setValue(DistanceConfig.get().maxDistance);
+            client.options.getSimulationDistance().setValue(DistanceConfig.get().maxDistance);
 
             client.options.write();
             client.worldRenderer.reload();
-            client.inGameHud.setOverlayMessage(Text.translatable("distancetoggle.changed", maxDistance), false);
+            client.inGameHud.setOverlayMessage(Text.translatable("distancetoggle.changed", DistanceConfig.get().maxDistance), false);
         } else {
             client.options.getViewDistance().setValue(oldViewDistance);
             client.options.getSimulationDistance().setValue(oldSimulationDistance);
@@ -52,7 +51,7 @@ public class DistancetoggleClient implements ClientModInitializer {
             client.inGameHud.setOverlayMessage(Text.translatable("distancetoggle.changed_again", oldViewDistance), false);
             oldViewDistance = -1;
             oldSimulationDistance = -1;
-
         }
     }
+
 }

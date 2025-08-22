@@ -15,10 +15,12 @@ public class ConfigScreen extends Screen {
 
     @Override
     protected void init() {
+        int initialValue = DistanceConfig.get().maxDistance;
+
         this.addDrawableChild(new SliderWidget(
                 this.width / 2 - 100, this.height / 2 - 25, 200, 20,
-                getSliderText(DistancetoggleClient.maxDistance),
-                (DistancetoggleClient.maxDistance - 2) / 30.0
+                getSliderText(initialValue),
+                (initialValue - 2) / 30.0
         ) {
             @Override
             protected void updateMessage() {
@@ -27,15 +29,18 @@ public class ConfigScreen extends Screen {
 
             @Override
             protected void applyValue() {
-                DistancetoggleClient.maxDistance = getValueAsDistance();
+                int value = getValueAsDistance();
+                DistanceConfig.get().maxDistance = value;
+                DistanceConfig.get().save();
+                DistanceConfig.get().maxDistance = value;
+                DistanceConfig.get().save();
             }
 
             private int getValueAsDistance() {
-                return 2 + (int)Math.round(this.value * 30); // 2–32
+                return 2 + (int)Math.round(this.value * 30);
             }
         });
 
-        // Done butonu
         this.addDrawableChild(ButtonWidget.builder(Text.of("Done"), b -> {
             assert this.client != null;
             this.client.setScreen(parent);
