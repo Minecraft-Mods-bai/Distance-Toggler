@@ -1,16 +1,6 @@
 
 # Distance Toggle Mod
 
-This mod allows you to toggle the render distance in Minecraft.  
+Press k (can be changed) toggles render distance to 32 (can be changed)
 
-- Press **K** to set the render distance to **32**.  
-- Press **K** again to restore the previous render distance.  
-
-## Translations
-
-To add translations, see the [Fabric Translatable Text documentation](https://docs.fabricmc.net/develop/text-and-translations#translatable-text).  
-
----
-
-💡 **Contributing:** Pull requests are welcome!
-
+<img src="./assets/pic1.png">
